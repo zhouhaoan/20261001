@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 芬兰 & 挪威斯瓦尔巴 12天极北之旅</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --aurora-green: #00d4aa;
+    --aurora-blue: #0077b6;
+    --aurora-purple: #7b2d8e;
+    --nordic-dark: #0a1628;
+    --nordic-mid: #132744;
+    --nordic-light: #1e3a5f;
+    --snow: #f0f4f8;
+    --warm: #fbbf24;
+    --finland-blue: #003580;
+    --norway-red: #ba0c2f;
+    --svalbard-ice: #89cff0;
+    --card-bg: rgba(255,255,255,0.06);
+    --card-border: rgba(255,255,255,0.1);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background: var(--nordic-dark);
+    color: #e2e8f0;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* Aurora background animation */
+  .aurora-bg {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .aurora-bg::before, .aurora-bg::after {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    animation: auroraMove 20s ease-in-out infinite alternate;
+  }
+  .aurora-bg::before {
+    background: radial-gradient(ellipse at 30% 20%, rgba(0,212,170,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(123,45,142,0.06) 0%, transparent 50%);
+  }
+  .aurora-bg::after {
+    background: radial-gradient(ellipse at 60% 30%, rgba(0,119,182,0.06) 0%, transparent 50%);
+    animation-delay: -10s;
+    animation-direction: alternate-reverse;
+  }
+  @keyframes auroraMove {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(3%, 2%) rotate(2deg); }
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 16px;
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 60px 20px 40px;
+    position: relative;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--aurora-green), var(--aurora-blue));
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 16px;
+    border-radius: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, #fff 0%, var(--aurora-green) 50%, var(--aurora-blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+  .hero .subtitle {
+    font-size: 1rem;
+    color: #94a3b8;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .hero .dates {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--warm);
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    margin: 30px 0;
+  }
+  .stat-item {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 16px 12px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+  }
+  .stat-item .num {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--aurora-green);
+  }
+  .stat-item .label {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin-top: 2px;
+  }
+
+  /* Section titles */
+  .section-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 40px 0 16px;
+    padding-left: 14px;
+    border-left: 4px solid var(--aurora-green);
+    color: #fff;
+  }
+
+  /* Visa info card */
+  .visa-card {
+    background: linear-gradient(135deg, rgba(0,53,128,0.3), rgba(0,119,182,0.15));
+    border: 1px solid rgba(0,119,182,0.3);
+    border-radius: 16px;
+    padding: 24px;
+    margin: 20px 0;
+  }
+  .visa-card h3 {
+    color: var(--aurora-green);
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+  .visa-card p {
+    font-size: 0.9rem;
+    color: #cbd5e1;
+    margin-bottom: 8px;
+  }
+  .visa-card .highlight {
+    color: var(--warm);
+    font-weight: 700;
+  }
+
+  /* Flight timeline */
+  .flight-timeline {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 24px;
+    margin: 20px 0;
+    backdrop-filter: blur(10px);
+  }
+  .flight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.88rem;
+  }
+  .flight-item:last-child { border-bottom: none; }
+  .flight-date {
+    min-width: 70px;
+    font-weight: 700;
+    color: var(--aurora-green);
+    font-size: 0.8rem;
+  }
+  .flight-route {
+    color: #e2e8f0;
+    flex: 1;
+  }
+  .flight-route .plane { color: var(--warm); }
+
+  /* Phase header */
+  .phase {
+    margin: 40px 0 20px;
+    position: relative;
+  }
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+  .phase-flag {
+    font-size: 1.8rem;
+    line-height: 1;
+  }
+  .phase-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .phase-sub {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-left: 44px;
+    margin-bottom: 16px;
+  }
+
+  /* Day cards */
+  .day-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .day-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(0,212,170,0.3);
+  }
+  .day-header {
+    padding: 16px 20px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .day-label {
+    font-weight: 900;
+    font-size: 1rem;
+    color: #fff;
+  }
+  .day-date {
+    font-size: 0.78rem;
+    color: #94a3b8;
+    background: rgba(255,255,255,0.06);
+    padding: 2px 10px;
+    border-radius: 10px;
+  }
+  .day-title {
+    width: 100%;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--aurora-green);
+    margin-top: 2px;
+  }
+  .day-body {
+    padding: 0 20px 20px;
+  }
+  .day-section {
+    margin-bottom: 14px;
+  }
+  .day-section:last-child { margin-bottom: 0; }
+  .day-section-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #64748b;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .day-section-title .icon { font-size: 0.9rem; }
+  .day-text {
+    font-size: 0.88rem;
+    color: #cbd5e1;
+    line-height: 1.85;
+  }
+  .day-text strong { color: #fff; font-weight: 600; }
+
+  /* Spot tags */
+  .spot-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .spot-tag {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 8px;
+    font-weight: 500;
+  }
+  .spot-tag.attraction {
+    background: rgba(0,212,170,0.15);
+    color: var(--aurora-green);
+    border: 1px solid rgba(0,212,170,0.25);
+  }
+  .spot-tag.food {
+    background: rgba(251,191,36,0.12);
+    color: var(--warm);
+    border: 1px solid rgba(251,191,36,0.25);
+  }
+  .spot-tag.activity {
+    background: rgba(123,45,142,0.15);
+    color: #c084fc;
+    border: 1px solid rgba(123,45,142,0.3);
+  }
+  .spot-tag.tip {
+    background: rgba(0,119,182,0.15);
+    color: var(--svalbard-ice);
+    border: 1px solid rgba(0,119,182,0.3);
+  }
+
+  /* Food card */
+  .food-box {
+    background: rgba(251,191,36,0.06);
+    border: 1px solid rgba(251,191,36,0.15);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-top: 8px;
+  }
+  .food-box .food-item {
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    padding: 3px 0;
+  }
+  .food-box .food-item .food-name {
+    color: var(--warm);
+    font-weight: 600;
+  }
+
+  /* Accommodation line */
+  .accommodation {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: #94a3b8;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .accommodation .icon { font-size: 1rem; }
+
+  /* Tips section */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .tip-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 18px;
+    backdrop-filter: blur(10px);
+  }
+  .tip-card h4 {
+    font-size: 0.9rem;
+    color: var(--aurora-green);
+    margin-bottom: 6px;
+  }
+  .tip-card p {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    line-height: 1.7;
+  }
+
+  /* Schengen math */
+  .math-card {
+    background: linear-gradient(135deg, rgba(123,45,142,0.15), rgba(0,119,182,0.1));
+    border: 1px solid rgba(123,45,142,0.25);
+    border-radius: 16px;
+    padding: 24px;
+    margin: 20px 0;
+  }
+  .math-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.9rem;
+  }
+  .math-row:last-child { border-bottom: none; }
+  .math-country { color: #e2e8f0; font-weight: 500; }
+  .math-nights {
+    font-weight: 900;
+    font-size: 1.1rem;
+  }
+  .math-nights.finland { color: var(--aurora-green); }
+  .math-nights.norway { color: var(--norway-red); }
+  .math-nights.svalbard { color: var(--svalbard-ice); }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 0.8rem;
+    color: #475569;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    margin-top: 40px;
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,212,170,0.3), transparent);
+    margin: 30px 0;
+  }
+
+  /* Responsive */
+  @media (min-width: 640px) {
+    .tips-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--nordic-dark); }
+  ::-webkit-scrollbar-thumb { background: var(--nordic-light); border-radius: 3px; }
+
+  /* Phase color strips */
+  .phase-finland .day-card { border-top: 3px solid var(--finland-blue); }
+  .phase-norway .day-card { border-top: 3px solid var(--norway-red); }
+  .phase-svalbard .day-card { border-top: 3px solid var(--svalbard-ice); }
+  .phase-oslo .day-card { border-top: 3px solid var(--aurora-purple); }
+</style>
+</head>
+<body>
+
+<div class="aurora-bg"></div>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">🌌 Arctic Expedition 2026</div>
+    <h1>芬兰 & 挪威斯瓦尔巴<br>12天极北之旅</h1>
+    <p class="subtitle">从赫尔辛基的波罗的海风情到北纬78°的冰川荒原，一路追光到世界尽头。专为深圳递交芬兰签证设计。</p>
+    <div class="dates">2026.09.25 — 2026.10.07</div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="num">12</div>
+      <div class="label">天行程</div>
+    </div>
+    <div class="stat-item">
+      <div class="num">3</div>
+      <div class="label">个国家/地区</div>
+    </div>
+    <div class="stat-item">
+      <div class="num">78°N</div>
+      <div class="label">最北纬度</div>
+    </div>
+    <div class="stat-item">
+      <div class="num">≈5</div>
+      <div class="label">次极光机会</div>
+    </div>
+  </div>
+
+  <!-- VISA INFO -->
+  <div class="visa-card">
+    <h3>🛂 签证关键信息</h3>
+    <p>签证申请国：<span class="highlight">芬兰（主访国）</span> — 深圳 VFS Global 芬兰签证中心（福田中洲湾）</p>
+    <p>入境次数：<span class="highlight">Multiple Entry（多次入境）</span> — 进出斯瓦尔巴群岛必须多次入境</p>
+    <p>核心逻辑：芬兰申根停留 <span class="highlight">4晚</span> > 挪威申根停留 <span class="highlight">3晚</span>，斯瓦尔巴 3 晚不属于申根区、不参与天数对比</p>
+    <p>⚠️ 必须附 Cover Letter 向签证官解释为何需要多次入境（斯瓦尔巴属非申根区，来回需出入境）</p>
+  </div>
+
+  <!-- FLIGHTS -->
+  <h2 class="section-title">✈️ 航班衔接计划</h2>
+  <div class="flight-timeline">
+    <div class="flight-item">
+      <div class="flight-date">09-25</div>
+      <div class="flight-route">香港 HKG <span class="plane">✈</span> 赫尔辛基 HEL — 芬兰航空 AY100（约11h）</div>
+    </div>
+    <div class="flight-item">
+      <div class="flight-date">09-26</div>
+      <div class="flight-route">赫尔辛基 HEL <span class="plane">✈</span> 罗瓦涅米 RVN — 芬兰航空内陆（约1.5h）</div>
+    </div>
+    <div class="flight-item">
+      <div class="flight-date">09-28</div>
+      <div class="flight-route">罗瓦涅米 RVN <span class="plane">🚌</span> 特罗姆瑟 TOS — 陆路穿越芬挪边境（约5-6h）</div>
+    </div>
+    <div class="flight-item">
+      <div class="flight-date">09-30</div>
+      <div class="flight-route">特罗姆瑟 TOS <span class="plane">✈</span> 朗伊尔城 LYR — SAS SK4414（约1.75h）出境申根</div>
+    </div>
+    <div class="flight-item">
+      <div class="flight-date">10-03</div>
+      <div class="flight-route">朗伊尔城 LYR <span class="plane">✈</span> 奥斯陆 OSL — SAS SK4425（约3h）重入申根</div>
+    </div>
+    <div class="flight-item">
+      <div class="flight-date">10-05</div>
+      <div class="flight-route">奥斯陆 OSL <span class="plane">✈</span> 赫尔辛基 HEL — 芬兰航空（约2h）确保芬兰主访</div>
+    </div>
+    <div class="flight-item">
+      <div class="flight-date">10-06</div>
+      <div class="flight-route">赫尔辛基 HEL <span class="plane">✈</span> 香港 HKG — 芬兰航空 AY99（约10h）10-07抵达</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ==================== PHASE 1: FINLAND ==================== -->
+  <div class="phase phase-finland">
+    <div class="phase-header">
+      <div class="phase-flag">🇫🇮</div>
+      <div class="phase-title">第一阶段：芬兰 · 赫尔辛基 & 拉普兰</div>
+    </div>
+    <div class="phase-sub">申根停留 4 晚 · 09.25 - 09.28 · 主访国</div>
+
+    <!-- Day 1 -->
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-label">DAY 1</span>
+        <span class="day-date">09月25日 周五</span>
+        <div class="day-title">🛬 抵达赫尔辛基 · 北欧初印象</div>
+      </div>
+      <div class="day-body">
+        <div class="day-section">
+          <div class="day-section-title"><span class="icon">📍</span> 行程安排</div>
+          <div class="day-text">
+            芬兰航空 AY100 凌晨从香港出发，当地时间<strong>早晨约 6:30 抵达赫尔辛基万塔机场</strong>。入境申根后乘火车（约30分钟）或机场巴士前往市中心。放下行李后，趁着时差带来的清醒开始游览。
+            <br><br>
+            上午前往<strong>赫尔辛基大教堂（白教堂 Tuomiokirkko）</strong>，这座通体雪白的新古典主义教堂矗立在参议院广场上，是赫尔辛基的绝对地标。登上台阶俯瞰广场全景，感受北欧的简洁与肃穆。广场周围还有<strong>赫尔辛基大学主楼</strong>和<strong>政府宫</strong>，建筑群整体气势恢宏。
+            <br><br>
+            随后步行前往<strong>乌斯别斯基大教堂（红教堂 Uspenskin katedraali）</strong>，这是西欧最大的东正教教堂，红砖外墙与金色洋葱顶形成鲜明对比，内部拜占庭风格的壁画与马赛克极为精美。
+            <br><br>
+            中午到<strong>老市场大厅（Vanha Kauppahalli）</strong>午餐，这座1889年建成的室内市场汇集了芬兰本地美食。下午如果体力尚可，推荐去<strong>岩石教堂（Temppeliaukio Church）</strong>，整座教堂从天然岩石中开凿而成，铜盘屋顶与粗粝石壁形成独特声学效果，经常有室内音乐会。
+            <br><br>
+            傍晚沿着<strong>Esplanadi 公园大道</strong>散步，两侧是品牌店与咖啡馆，尽头就是<strong>露天集市广场（Kauppatori）</strong>，可以买到新鲜的炸鱼、肉桂卷和当地工艺品。9月底赫尔辛基日落约18:30，晚霞映照在波罗的海港湾上，非常美。
+          </div>
+          <div class="spot-tags">
+            <span class="spot-tag attraction">白教堂 & 参议院广场</span>
+            <span class="spot-tag attraction">红教堂（乌斯别斯基）</span>
+            <span class="spot-tag attraction">岩石教堂</span>
+            <span class="spot-tag attraction">Esplanadi 林荫道</span>
+            <span class="spot-tag attraction">露天集市广场</span>
+          </div>
+        </div>
+        <div class="day-section">
+          <div class="day-section-title"><span class="icon">🍽️</span> 美食推荐</div>
+          <div class="food-box">
+            <div class="food-item"><span class="food-name">老市场大厅 Soppakeittiö</span> — 招牌三文鱼浓汤（Lohikeitto），奶油基底配大块三文鱼和土豆，配黑面包，约€12-15</div>
+            <div class="food-item"><span class="food-name">Karl Fazer Café</span> — 芬兰国宝巧克力品牌的旗舰咖啡馆，必尝 Fazer 蓝莓巧克力蛋糕和手工巧克力，优雅的Art Deco内装</div>
+            <div class="food-item"><span class="food-name">露天市场摊位</span> — 现炸小鱼（Muikku），撒柠檬汁吃，酥脆鲜美，€8-10一份</div>
+            <div class="food-item"><span class="food-name">Story Restaurant</span> — 位于集市广场旁，北欧现代料理，落地窗看海港</div>
+          </div>
+        </div>
+        <div class="accommodation">
+          <span class="icon">🏨</span> 住宿：赫尔辛基市中心（推荐 Hotel Kämp / Scandic Grand Central / CheapSleep Helsinki 青旅）
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 2 -->
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-label">DAY 2</span>
+        <span class="day-date">09月26日 周六</span>
+        <div class="day-title">🦌 飞往罗瓦涅米 · 跨越北极圈</div>
+      </div>
+      <div class="day-body">
+        <div class="day-section">
+          <div class="day-section-title"><span class="icon">📍</span> 行程安排</div>
+          <div class="day-text">
+            上午搭乘芬兰航空内陆航班飞往<strong>罗瓦涅米 (Rovaniemi)</strong>，约1.5小时。罗瓦涅米是拉普兰省会，也是官方认证的<strong>圣诞老人故乡</strong>，整座城市在二战中被烧毁后由建筑师阿尔瓦·阿尔托按驯鹿角形状重新规划。
+            <br><br>
+            抵达后先前往<strong>Arktikum 北极博物馆</strong>，这座标志性的玻璃隧道建筑横跨在河岸上，馆内详细展示了北极地区的自然生态、萨米人的传统文化以及极地科学研究。互动展区可以体验极夜/极昼的光影变化，了解北极光的形成原理——为接下来几天的极光观测做好知识储备。
+            <br><br>
+            下午前往<strong>圣诞老人村 (Santa Claus Village)</strong>，就在北极圈线（北纬66°33'）上。这里你可以：跨过地面上标记的<strong>北极圈线</strong>拍照留念；进入圣诞老人办公室与真人圣诞老人合影对话（免费会面，官方照片约€40）；在<strong>圣诞老人邮局</strong>寄出盖有北极圈邮戳的明信片（可选择当年圣诞节寄达）；走进各种北欧设计品商店，驯鹿皮手套、Moomin周边、拉普兰浆果果酱都是好选择。
+            <br><br>
+            9月底的罗瓦涅米已经入秋，拉普兰著名的<strong>"Ruska"秋色季</strong>可能还在尾声，苔原和白桦林一片金红，非常壮观。
+          </div>
+          <div class="spot-tags">
+            <span class="spot-tag attraction">Arktikum 北极博物馆</span>
+            <span class="spot-tag attraction">圣诞老人村</span>
+            <span class="spot-tag activity">跨越北极圈线</span>
+            <span class="spot-tag activity">圣诞老人邮局寄明信片</span>
+            <span class="spot-tag tip">Ruska秋色季尾声</span>
+          </div>
+        </div>
+        <div class="day-section">
+          <div class="day-section-title"><span class="icon">🍽️</span> 美食推荐</div>
+          <div class="food-box">
+            <div class="food-item"><span class="food-name">Ravintola Nili</span> — 罗瓦涅米最著名的拉普兰餐厅，必点：慢炖驯鹿肉（Poronkäristys）配土豆泥和越橘果酱、烤帝王蟹腿、北极红点鲑，人均€35-50</div>
+            <div class="food-item"><span class="food-name">圣诞老人村内 Santa's Salmon Place</span> — 炭火烤三文鱼配黑面包，户外用餐有篝火氛围</div>
+            <div class="food-item"><span class="food-name">Arctic Boulevard</span> — 城中心的现代北欧餐厅，创意驯鹿料理和本地精酿啤酒</div>
+            <div class="food-item"><span class="food-name">🫐 拉普兰野生浆果</span> — 超市里买云莓（Lakka/Cloudberry）、越橘、蓝莓，Fazer出的浆果巧克力也值得囤</div>
+          </div>
+        </div>
+        <div class="accommodation">
+          <span class="icon">🏨</span> 住宿：罗瓦涅米市区酒店（推荐 Arctic Light Hotel / Scandic Rovaniemi City / Santa's Hotel Santa Claus）
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 3 -->
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-label">DAY 3</span>
+        <span class="day-date">09月27日 周日</span>
+        <div class="day-title">🌌 哈士奇驯鹿 · 玻璃屋极光初体验</div>
+      </div>
+      <div class="day-body">
+        <div class="day-section">
+          <div class="day-section-title"><span class="icon">📍</span> 行程安排</div>
+          <div class="day-text">
+            这是在拉普兰最精彩的一天。上午参加<strong>哈士奇农场体验</strong>（如 Bearhill Husky 或 Arctic Circle Husky Park）：秋季虽不能坐雪橇，但可以参观犬舍、与热情的阿拉斯加雪橇犬亲密互动、了解芬兰雪橇犬文化，幼犬区尤其治愈。部分农场9月提供<strong>哈士奇徒步（Husky Hike）</strong>，带着哈士奇在秋色森林中散步。
+            <br><br>
+            午后前往<strong>驯鹿农场</strong>（如 Sirmakko Reindeer Farm），近距离喂食半驯化的驯鹿，听萨米族牧民讲述驯鹿放牧传统。萨米人是欧洲最后的原住游牧民族，驯鹿是他们文化的核心——食物、交通、服饰全系于此。农场通常还提供热浆果汁和传统小点心。
+            <br><br>
+            傍晚前往<strong>极地玻璃屋</strong>入住（推荐 Arctic SnowHotel Glass Igloos / Santa's Igloos / Arctic TreeHouse Hotel）。这些全透明或大面积玻璃顶的独立小屋就坐落在远离光害的郊外，躺在温暖的床上就能仰望星空。<strong>9月底是拉普兰极光季的早期</strong>，Kp指数达到3以上就很有希望看到绿色光带舞动。记得在手机上下载<strong>Aurora Alert</strong>或<strong>My Aurora Forecast</strong> app 设置提醒。
+            <br><br>
+            即使极光未出现，玻璃屋上方的满天繁星也足够震撼——这里的光污染几乎为零。
+          </div>
+          <div class="spot-tags">
+            <span class="spot-tag activity">哈士奇农场 / 哈士奇徒步</span>
+            <span class="spot-tag activity">驯鹿农场 · 萨米文化</span>
+            <span class="spot-tag activity">玻璃屋极光观测</span>
+            <span class="spot-tag tip">下载 Aurora Alert App</span>
+          </div>
+        </div>
+        <div class="day-section">
+          <div class="day-section-title"><span class="icon">🍽️</span> 美食推荐</div>
+          <div class="food-box">
+            <div class="food-item"><span class="food-name">玻璃屋度假村晚餐</span> — 多数玻璃屋酒店提供含晚餐套餐，拉普兰风格：驯鹿汤或烤鱼主菜 + 浆果甜品</div>
+            <div class="food-item"><span class="food-name">营火烤香肠（Grillimakkara）</span> — 部分农场提供篝火体验，芬兰人最爱的粗肉肠烤到焦脆，配芥末酱</div>
+            <div class="food-item"><span class="food-name">Leipäjuusto 面包奶酪</span> — 拉普兰特产，烤制的奶酪有嚼劲，配云莓果酱吃，甜咸交融</div>
+          </div>
+        </div>
+        <div class="accommodation">
+          <span class="icon">🏨</span> 住宿：极地玻璃屋（Arctic SnowHotel Glass Igloos / Santa's Igloos Arctic Circle / Arctic TreeHouse Hotel）约€250-500/晚
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 4 (extra Helsinki night for visa) -->
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-label">DAY 4</span>
+        <span class="day-date">09月28日 周一</span>
+        <div class="day-title">🍂 拉普兰秋色 · 跨越芬挪边境前往特罗姆瑟</div>
+      </div>
+      <div class="day-body">
+        <div class="day-section">
+          <div class="day-section-title"><span class="icon">📍</span> 行程安排</div>
+          <div class="day-text">
+            今天是精彩的跨国公路旅程。从罗瓦涅米出发，乘坐<strong>Eskelisen Lapin Linjat 长途巴士</strong>或提前预定的拼车/租车，沿 E8 公路向西北方向穿越<strong>芬挪边境</strong>，途经 Kilpisjärvi 边境小镇，全程约 5-6 小时。
+            <br><br>
+            沿途的风景本身就是最大的看点：从芬兰拉普兰的<strong>白桦林和针叶林</strong>开始，秋色从金黄到火红渐变；穿过边境后地貌剧变为<strong>挪威峡湾地形</strong>，陡峭的山崖、幽蓝的峡湾和瀑布不断出现。若自驾，建议在沿途观景台多次停靠，尤其是 Skibotn 峡湾段的景色极为壮观。
+            <br><br>
+            傍晚抵达<strong>特罗姆瑟 (Tromsø)</strong>——"北极之门"，挪威北部最大城市，北纬69.6°。放下行李后，趁天色尚亮前往<strong>Fjellheisen 缆车</strong>登上 Storsteinen 山顶（海拔421米）。山顶观景台可以<strong>360°俯瞰</strong>整个特罗姆瑟岛、周围的峡湾和远处的雪山，被称为"挪威最美城市全景"之一。缆车往返约 NOK 250（≈€22）。
+            <br><br>
+            如果天气晴朗，山顶也是绝佳的极光观测点——特罗姆瑟位于极光椭圆带正下方，是世界上观测极光的最佳城市之一。
+          </div>
+          <div class="spot-tags">
+            <span class="spot-tag activity">芬挪边境公路穿越</span>
+            <span class="spot-tag attraction">Fjellheisen 缆车 · 城市全景</span>
+            <span class="spot-tag tip">极光椭圆带核心区</span>
+          </div>
+        </div>
+        <div class="day-section">
+          <div class="day-section-title"><span class="icon">🍽️</span> 美食推荐</div>
+          <div class="food-box">
+            <div class="food-item"><span class="food-name">Fiskekompaniet</span> — 特罗姆瑟港口边的海鲜餐厅，新鲜帝王蟹、北极鳕鱼、挪威三文鱼刺身拼盘，水准极高</div>
+            <div class="food-item"><span class="food-name">Mathallen Tromsø (美食市集)</span> — 各种挪威小食摊位，适合快速解决一餐</div>
+            <div class="food-item"><span class="food-name">Risø Mat & Kaffebar</span> — 温馨咖啡馆，招牌肉桂卷（Kanelbolle）配手冲咖啡</div>
+          </div>
+        </div>
+        <div class="accommodation">
+          <span class="icon">🏨</span> 住宿：特罗姆瑟市中心（推荐 Scandic Ishavshotel 港口景 / Clarion Hotel The Edge / Smarthotel Tromsø 经济型）
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ==================== PHASE 2: TROMSØ ==================== -->
+  <div class="phase phase-norway">
+    <div class="phase-header">
+      <div class="phase-flag">🇳🇴</div>
+      <div class="phase-title">第二阶段：挪威特罗姆瑟 · 极光之都</div>
+    </div>
+    <div class="phase-sub">申根停留 · 09.28 - 09.30</div>
+
+    <!-- Day 5 -->
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-label">DAY 5</span>
+        <span class="day-date">09月29日 周二</span>
+        <div class="day-title">⛪ 北极大教堂 · 夜追极光</div>
+      </div>
+      <div class="day-body">
+        <div class="day-section">
+          <div class="day-section-title"><span class="icon">📍</span> 行程安排</div>
+          <div class="day-text">
+            上午前往特罗姆瑟最标志性的建筑——<strong>北极大教堂（Ishavskatedralen / Arctic Cathedral）</strong>。这座1965年建成的三角形混凝土教堂灵感来自冰山与极光，东面巨幅23米高的彩色玻璃窗描绘基督再临的场景，在日光照射下色彩斑斓。教堂内经常举办音乐会，音响效果极佳。
+            <br><br>
+            随后步行至附近的<strong>Polaria 体验中心</strong>，这是世界最北的水族馆，建筑外形模仿被暴风雪吹倒的多米诺骨牌。馆内有<strong>北极髯海豹</strong>的活体展示（可看喂食表演），以及关于北极气候变化、斯瓦尔巴群岛生态的全景影片——正好为即将前往的斯瓦尔巴做功课。
+            <br><br>
+            下午参观<strong>极地博物馆（Polarmuseet）</strong>，了解挪威猎人在北极的狩猎历史和探险传奇，以及<strong>特罗姆瑟大学博物馆</strong>中关于萨米文化和北极光科学的展区。之后在市中心逛逛<strong>Storgata 主街</strong>，这里有不少独立设计店、户外品牌店（提前补充斯瓦尔巴需要的保暖装备）。
+            <br><br>
+            <strong>重头戏在晚上</strong>——参加<strong>专业极光追逐团（Aurora Chase Tour）</strong>，由经验丰富的向导驾驶小巴，根据实时卫星云图和Kp指数，将你带到方圆100-200公里内最佳的晴朗暗天区域。团费通常包含热饮、三脚架和摄影指导，持续约6-7小时（晚8点-凌晨2点）。9月底特罗姆瑟的极光活跃度已经相当高，成功率约 70-85%。
+          </div>
+          <div class="spot-tags">
+            <span class="spot-tag attraction">北极大教堂</span>
+            <span class="spot-tag attraction">Polaria 北极体验中心</span>
+            <span class="spot-tag attraction">极地博物馆</span>
+            <span class="spot-tag activity">🌌 夜间极光追逐团</span>
+          </div>
+        </div>
+        <div class="day-section">
+          <div class="day-section-title"><span class="icon">🍽️</span> 美食推荐</div>
+          <div class="food-box">
+            <div class="food-item"><span class="food-name">Emma's Drømmekjøkken</span> — 特罗姆瑟名店，"Emma的梦幻厨房"，创意北极料理：驯鹿他他、帝王蟹意面、海鸟蛋，需提前预定</div>
+            <div class="food-item"><span class="food-name">Bardus Bistro</span> — 本地人最爱的轻松小酒馆，鳕鱼汉堡、驯鹿肉饼、北极精酿啤酒</div>
+            <div class="food-item"><span class="food-name">Mack Ølhallen（Mack 啤酒吧）</span> — 世界最北的啤酒厂旗下酒吧，1877年创立，试饮极地啤酒 + 挪威 brunost 棕色奶酪</div>
+            <div class="food-item"><span class="food-name">🐋 鲸鱼肉</span> — 挪威合法食品，很多餐厅有鲸鱼牛排，口感类似牛肉但更嫩，体验北极饮食文化</div>
+          </div>
+        </div>
+        <div class="accommodation">
+          <span class="icon">🏨</span> 住宿：特罗姆瑟（同 Day 4 酒店）
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ==================== PHASE 3: SVALBARD ==================== -->
+  <div class="phase phase-svalbard">
+    <div class="phase-header">
+      <div class="phase-flag">🏔️</div>
+      <div class="phase-title">第三阶段：斯瓦尔巴群岛 · 世界尽头</div>
+    </div>
+    <div class="phase-sub">非申根区 · 3晚 · 09.30 - 10.03 · 北纬78° · 中国公民免签</div>
+
+    <!-- Day 6 -->
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-label">DAY 6</span>
+        <span class="day-date">09月30日 周三</span>
+        <div class="day-title">🧊 飞向北纬78° · 抵达朗伊尔城</div>
+      </div>
+      <div class="day-body">
+        <div class="day-section">
+          <div class="day-section-title"><span class="icon">📍</span> 行程安排</div>
+          <div class="day-text">
+            在特罗姆瑟机场办理<strong>出境申根手续</strong>（边检会在护照上盖出境章），搭乘 SAS 航班飞往<strong>朗伊尔城 (Longyearbyen)</strong>，约1小时45分钟。当飞机窗外出现无尽的冰川和灰白色冻土时，你就知道到了地球最北的定居点。
+            <br><br>
+            朗伊尔城机场极小，取行李后乘<strong>机场巴士（Flybussen）</strong>约10分钟到市中心。这座<strong>全球最北的城镇</strong>（常住人口约2500人）坐落在两座山谷之间，彩色木屋沿着山坡排列，远处就是冰川。
+            <br><br>
+            下午前往<strong>斯瓦尔巴博物馆（Svalbardmuseet）</strong>——了解这片土地从被发现到煤矿开采，再到如今成为北极科研基地的完整历史。展品包括北极熊标本、捕鲸时代文物、矿工生活还原以及极地气候变化展区。
+            <br><br>
+            之后在小镇上散步，走过<strong>世界最北的教堂（Svalbard Church）</strong>、<strong>世界最北的邮局</strong>（寄出盖有北纬78°邮戳的明信片！）。注意街上随处可见的<strong>北极熊警告标志</strong>——出城界必须携带枪支或有武装向导陪同，这不是玩笑。
+            <br><br>
+            ⚠️ <strong>重要提示</strong>：10月初斯瓦尔巴正进入极夜前的"蓝光时期"，每天约有6-8小时的暮光，天空呈现深邃的靛蓝色，非常梦幻。这也是斯瓦尔巴极光季的开始，有机会看到比大陆更壮观的极光。
+          </div>
+          <div class="spot-tags">
+            <span class="spot-tag activity">出境申根 · 飞往北纬78°</span>
+            <span class="spot-tag attraction">斯瓦尔巴博物馆</span>
+            <span class="spot-tag attraction">世界最北教堂 & 邮局</span>
+            <span class="spot-tag tip">⚠️ 出城必须有武装向导</span>
+          </div>
+        </div>
+        <div class="day-section">
+          <div class="day-section-title"><span class="icon">🍽️</span> 美食推荐</div>
+          <div class="food-box">
+            <div class="food-item"><span class="food-name">Kroa Restaurant</span> — 朗伊尔城最热闹的餐厅/酒吧，装修充满矿工风格，汉堡、披萨和海豹肉料理，晚上有现场音乐</div>
+            <div class="food-item"><span class="food-name">Gruvelageret Bistro</span> — 前矿业仓库改造，位于中心地段，北极鳕鱼、鲸鱼肉、驯鹿香肠拼盘</div>
+            <div class="food-item"><span class="food-name">Fruene（花店咖啡馆）</span> — 世界最北的甜品店之一，招牌三层巧克力蛋糕，温馨花艺装饰</div>
+            <div class="food-item"><span class="food-name">🍺 Svalbard Bryggeri</span> — 世界最北的啤酒厂！用冰川融水酿造，试饮Spitsbergen Pale Ale</div>
+          </div>
+        </div>
+        <div class="accommodation">
+          <span class="icon">🏨</span> 住宿：朗伊尔城（推荐 Basecamp Hotel 探险风 / Radisson Blu Polar Hotel 世界最北四星 / Coal Miners' Cabins 矿工小屋风格）
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 7 -->
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-label">DAY 7</span>
+        <span class="day-date">10月01日 周四 🇨🇳 国庆节</span>
+        <div class="day-title">🚢 Esmark冰川巡游 · 北极野生动物</div>
+      </div>
+      <div class="day-body">
+        <div class="day-section">
+          <div class="day-section-title"><span class="icon">📍</span> 行程安排</div>
+          <div class="day-text">
+            国庆节当天，在地球最北的定居点度过——大概是最酷的国庆方式了。
+            <br><br>
+            今天参加斯瓦尔巴最经典的活动——<strong>Esmark 冰川乘船巡游</strong>（由 Henningsen Transport & Guiding 或 Svalbard Adventures 运营，约 5-7 小时）。乘坐双体船从朗伊尔城出发，沿着<strong>Isfjorden 冰峡湾</strong>航行至 Esmarkbreen 冰川前端。
+            <br><br>
+            沿途可能看到的野生动物：<strong>环斑海豹</strong>趴在浮冰上晒太阳、<strong>髯海豹</strong>在水面探头、<strong>北极海鸟</strong>（三趾鸥、北极燕鸥、海鸠）群飞、运气好的话还能看到<strong>白鲸（Beluga）</strong>群。向导会用望远镜帮你在远处的海岸线上搜寻<strong>北极熊</strong>的踪迹——10月初它们开始活跃起来。
+            <br><br>
+            最震撼的时刻是靠近冰川前端：巨大的蓝白色冰壁矗立在眼前，偶尔轰然崩塌落入海中（冰川崩解），激起巨浪。船会保持安全距离让你拍照和录像。船上提供<strong>保暖连体服</strong>和热饮（热巧克力/咖啡），但建议穿足保暖层，气温可能低至 -5°C 至 +2°C。
+            <br><br>
+            返程时的峡湾晚霞配上远处雪山，如果有极光，更是绝世美景。
+          </div>
+          <div class="spot-tags">
+            <span class="spot-tag activity">🚢 Esmark冰川巡游 5-7h</span>
+            <span class="spot-tag activity">🦭 海豹 · 海鸟 · 白鲸</span>
+            <span class="spot-tag activity">冰川崩解观赏</span>
+            <span class="spot-tag tip">穿够保暖层！-5~2°C</span>
+          </div>
+        </div>
+        <div class="day-section">
+          <div class="day-section-title"><span class="icon">🍽️</span> 美食推荐</div>
+          <div class="food-box">
+            <div class="food-item"><span class="food-name">Huset Restaurant</span> — 朗伊尔城最高档的餐厅，拥有世界最北的私人酒窖（15000瓶！），北极品味套餐菜单包括驯鹿鞑靼、北极贝、海豹肉和自制冰川冰淇淋，人均 NOK 800-1200</div>
+            <div class="food-item"><span class="food-name">船上热巧克力 + 小食</span> — 巡游团通常提供，在冰川面前喝热巧克力是人生高光时刻</div>
+            <div class="food-item"><span class="food-name">Svalbar (酒吧)</span> — 晚间回来后去这家全球最北的鸡尾酒吧，试一杯用冰川冰调的鸡尾酒，暖身醒神</div>
+          </div>
+        </div>
+        <div class="accommodation">
+          <span class="icon">🏨</span> 住宿：朗伊尔城（同 Day 6 酒店）
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 8 -->
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-label">DAY 8</span>
+        <span class="day-date">10月02日 周五</span>
+        <div class="day-title">⛏️ 矿洞探秘 · 种子库 · 极地纪念品</div>
+      </div>
+      <div class="day-body">
+        <div class="day-section">
+          <div class="day-section-title"><span class="icon">📍</span> 行程安排</div>
+          <div class="day-text">
+            上午参加<strong>3号矿（Gruve 3）探秘之旅</strong>——深入已废弃的煤矿巷道，戴上矿灯和安全帽，在向导带领下了解朗伊尔城百年采煤史。矿道里温度常年约 +4°C，可以看到保存完好的采矿设备、矿车轨道和矿工更衣室。向导会讲述矿工们在极端条件下的生活：极夜中的劳作、矿难和这座小城如何从纯矿业城镇转型为科研旅游基地。整个体验约 3 小时。
+            <br><br>
+            中午回到镇上，步行或乘车前往<strong>斯瓦尔巴全球种子库（Svalbard Global Seed Vault）</strong>的外部参观。这座"末日种子库"建在永久冻土层深处的山体中，储存着全球约 120 万份农作物种子样本，用于在全球性灾难后重建农业。虽然内部不对公众开放，但<strong>三角形混凝土入口</strong>嵌在雪山中的画面极具科幻感，是斯瓦尔巴最具象征意义的打卡点。
+            <br><br>
+            下午前往<strong>北极探险博物馆（North Pole Expedition Museum）</strong>，展示了从气球到飞艇再到破冰船的各种北极点征服史。然后回到镇中心选购纪念品：<strong>Longyearbyen Lokalstyre 纪念品店</strong>有官方北极熊标志周边；<strong>78° North</strong>有设计感十足的斯瓦尔巴主题服饰；各家户外店可以买到印有坐标"78°N"的T恤、冰箱贴和地图明信片。
+            <br><br>
+            💡 <strong>有趣的冷知识</strong>：朗伊尔城是世界上唯一法律禁止死亡的城市——因为遗体在永久冻土中无法分解，生命垂危者必须被送回挪威本土。此外，进入任何建筑物都需要脱鞋，这是煤矿时代留下的传统。
+          </div>
+          <div class="spot-tags">
+            <span class="spot-tag activity">⛏️ 3号矿洞探秘 3h</span>
+            <span class="spot-tag attraction">全球种子库（外观）</span>
+            <span class="spot-tag attraction">北极探险博物馆</span>
+            <span class="spot-tag activity">🛍️ 78°N纪念品采购</span>
+          </div>
+        </div>
+        <div class="day-section">
+          <div class="day-section-title"><span class="icon">🍽️</span> 美食推荐</div>
+          <div class="food-box">
+            <div class="food-item"><span class="food-name">Rabalder Café & Barista</span> — 本地最受欢迎的咖啡馆，手工蛋糕和三明治出色，推荐北极蓝莓芝士蛋糕</div>
+            <div class="food-item"><span class="food-name">Nansen Restaurant（Radisson内）</span> — 提供精致晚餐，驯鹿里脊配松露、北极红点鲑配季节蔬菜</div>
+            <div class="food-item"><span class="food-name">Mary-Ann's Polarrigg</span> — 矿工营房改建的主题餐厅/旅馆，很有工业怀旧感，试矿工套餐</div>
+            <div class="food-item"><span class="food-name">🛒 Svalbardbutikken 超市</span> — 世界最北超市，买些挪威巧克力 Freia Kvikk Lunsj（挪威 KitKat）和鱼罐头当手信</div>
+          </div>
+        </div>
+        <div class="accommodation">
+          <span class="icon">🏨</span> 住宿：朗伊尔城（同 Day 6 酒店）
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ==================== PHASE 4: OSLO ==================== -->
+  <div class="phase phase-oslo">
+    <div class="phase-header">
+      <div class="phase-flag">🇳🇴</div>
+      <div class="phase-title">第四阶段：奥斯陆 & 赫尔辛基返程</div>
+    </div>
+    <div class="phase-sub">重入申根 · 10.03 - 10.06 · 奥斯陆 2晚 + 赫尔辛基 1晚（确保芬兰4晚主访）</div>
+
+    <!-- Day 9 -->
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-label">DAY 9</span>
+        <span class="day-date">10月03日 周六</span>
+        <div class="day-title">🛬 重返大陆 · 奥斯陆初见</div>
+      </div>
+      <div class="day-body">
+        <div class="day-section">
+          <div class="day-section-title"><span class="icon">📍</span> 行程安排</div>
+          <div class="day-text">
+            告别斯瓦尔巴，搭乘 SAS 航班飞回奥斯陆（约3小时），在奥斯陆加勒穆恩机场<strong>重新进入申根区</strong>（边检盖入境章）。乘机场快线（Flytoget，约20分钟）到市中心。
+            <br><br>
+            下午先去<strong>奥斯陆歌剧院（Operahuset）</strong>——这座倾斜入海的白色大理石建筑是当代建筑杰作，可以直接走上屋顶，俯瞰奥斯陆峡湾和新兴的 Bjørvika 海滨区。免费上屋顶，随时可去。
+            <br><br>
+            从歌剧院步行几分钟就是<strong>蒙克博物馆（MUNCH）</strong>，2021年新开的13层高楼，收藏了爱德华·蒙克（《呐喊》作者）的约28000件作品。除了多个版本的《呐喊》和《麦当娜》，还有大量不为人知的晚期作品。11层的天台咖啡馆视野绝佳。门票约 NOK 160。
+            <br><br>
+            傍晚到<strong>Aker Brygge 码头区</strong>漫步，这里是奥斯陆最时髦的滨海区，餐厅、酒吧鳞次栉比，面朝峡湾的户外座位非常惬意。
+          </div>
+          <div class="spot-tags">
+            <span class="spot-tag activity">重入申根区</span>
+            <span class="spot-tag attraction">奥斯陆歌剧院 · 走上屋顶</span>
+            <span class="spot-tag attraction">蒙克博物馆 MUNCH</span>
+            <span class="spot-tag attraction">Aker Brygge 码头区</span>
+          </div>
+        </div>
+        <div class="day-section">
+          <div class="day-section-title"><span class="icon">🍽️</span> 美食推荐</div>
+          <div class="food-box">
+            <div class="food-item"><span class="food-name">Mathallen Oslo（美食市集）</span> — 奥斯陆的"美食圣殿"，30+摊位：挪威褐虾三明治、精酿啤酒、手工奶酪、越南粉、意式Gelato应有尽有</div>
+            <div class="food-item"><span class="food-name">Vippa 美食广场</span> — 码头旁的多元美食市集，异国风情+本地海鲜，性价比高</div>
+            <div class="food-item"><span class="food-name">Rorbua</span> — Aker Brygge 区的渔村主题餐厅，鳕鱼舌（Torsketunger，挪威特色！）、鱼汤和炸鱼薯条</div>
+            <div class="food-item"><span class="food-name">Tim Wendelboe</span> — 全球咖啡界圣地之一，第三波咖啡浪潮先驱，必喝手冲 filter coffee</div>
+          </div>
+        </div>
+        <div class="accommodation">
+          <span class="icon">🏨</span> 住宿：奥斯陆市中心（推荐 The Thief 设计酒店 / Scandic Vulkan / Citybox Oslo 经济型）
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 10 -->
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-label">DAY 10</span>
+        <span class="day-date">10月04日 周日</span>
+        <div class="day-title">🎨 维格兰雕塑 · 王宫大街 · 峡湾游船</div>
+      </div>
+      <div class="day-body">
+        <div class="day-section">
+          <div class="day-section-title"><span class="icon">📍</span> 行程安排</div>
+          <div class="day-text">
+            上午前往<strong>维格兰雕塑公园（Vigelandsparken）</strong>——全球最大的单一艺术家雕塑公园，免费开放。古斯塔夫·维格兰用毕生精力创作了200多座人体雕塑，主题涵盖生老病死、喜怒哀乐。最标志性的是中央的<strong>生命之柱（Monolitten）</strong>：一根14.12米高的花岗岩柱上雕刻了121个交缠的人体，象征人类从生到死的轮回。另一个必看的是<strong>"愤怒的小男孩（Sinnataggen）"</strong>铜像，已成为奥斯陆的萌系吉祥物。秋季公园内金叶满地，与灰白色雕塑对比格外好看。
+            <br><br>
+            中午前往<strong>卡尔·约翰大街（Karl Johans gate）</strong>，这是奥斯陆的主干道，从中央车站一直延伸到<strong>挪威王宫（Det kongelige slott）</strong>。沿途经过国家剧院、大学、议会大厦，两旁是品牌店和咖啡馆。王宫前的大花园可以自由进入散步。
+            <br><br>
+            下午推荐乘<strong>奥斯陆峡湾迷你游船（Oslo Fjord Cruise）</strong>，约2小时环游峡湾中的小岛，从水上看城市天际线和歌剧院建筑群，或者选择渡轮前往<strong>Bygdøy 半岛</strong>参观<strong>维京船博物馆（新的维京时代博物馆预计2026年开放部分展区）</strong>和<strong>弗拉姆号极地探险船博物馆（Frammuseet）</strong>——馆内停放着真正曾到达南北极的弗拉姆号木帆船，可以登船参观。
+          </div>
+          <div class="spot-tags">
+            <span class="spot-tag attraction">维格兰雕塑公园（免费）</span>
+            <span class="spot-tag attraction">卡尔·约翰大街 & 王宫</span>
+            <span class="spot-tag activity">奥斯陆峡湾游船</span>
+            <span class="spot-tag attraction">弗拉姆号极地博物馆</span>
+          </div>
+        </div>
+        <div class="day-section">
+          <div class="day-section-title"><span class="icon">🍽️</span> 美食推荐</div>
+          <div class="food-box">
+            <div class="food-item"><span class="food-name">Dovrehallen</span> — Karl Johans gate 上老牌餐厅，试挪威国菜 Fårikål（羊肉白菜炖锅，秋季限定！）</div>
+            <div class="food-item"><span class="food-name">Fiskeriet Youngstorget</span> — 鱼市场风格，点一盘挪威褐虾（Reker）配白面包和蛋黄酱，鲜甜无比</div>
+            <div class="food-item"><span class="food-name">Fuglen Coffee</span> — 复古北欧设计风咖啡馆，也是鸡尾酒吧，东京也有分店的世界级品质</div>
+            <div class="food-item"><span class="food-name">🧇 挪威华夫饼（Vafler）</span> — 心形华夫饼配酸奶油和越橘果酱是挪威灵魂小食，很多咖啡馆都有</div>
+          </div>
+        </div>
+        <div class="accommodation">
+          <span class="icon">🏨</span> 住宿：奥斯陆（同 Day 9 酒店）
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 11 -->
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-label">DAY 11</span>
+        <span class="day-date">10月05日 周一</span>
+        <div class="day-title">🏰 奥斯陆半日 · 飞回赫尔辛基（签证策略）</div>
+      </div>
+      <div class="day-body">
+        <div class="day-section">
+          <div class="day-section-title"><span class="icon">📍</span> 行程安排</div>
+          <div class="day-text">
+            <strong>⚠️ 签证策略关键日</strong>：为确保芬兰（4晚）> 挪威（3晚）的申根天数逻辑成立，今天下午飞回赫尔辛基住一晚，明天从赫尔辛基离境。这样芬兰住宿记录为 Day1 + Day11 = 赫尔辛基2晚，加上罗瓦涅米2晚 = <strong>芬兰共4晚</strong>。
+            <br><br>
+            上午利用半天时间完成奥斯陆最后的打卡。先去<strong>阿克什胡斯城堡（Akershus Festning）</strong>，这座建于1299年的中世纪城堡和文艺复兴宫殿矗立在峡湾半岛上，可以免费进入城堡区散步，站在城墙上俯瞰奥斯陆港湾和市政厅。内部的<strong>挪威抵抗博物馆</strong>记录了二战时期挪威人对抗纳粹占领的英勇历史。
+            <br><br>
+            旁边的<strong>诺贝尔和平中心（Nobel Peace Center）</strong>也值得一看，互动展区展示历届和平奖得主的故事和贡献。
+            <br><br>
+            在机场办理<strong>退税（Tax Free）</strong>——挪威非欧盟国家，购物退税额度较高（约11-19%），电子产品、户外品牌和设计品都可以退。下午搭乘芬兰航空飞赫尔辛基（约2小时），晚上回到赫尔辛基。
+          </div>
+          <div class="spot-tags">
+            <span class="spot-tag attraction">阿克什胡斯城堡</span>
+            <span class="spot-tag attraction">诺贝尔和平中心</span>
+            <span class="spot-tag tip">⚠️ 办理退税</span>
+            <span class="spot-tag activity">飞回赫尔辛基 · 芬兰第4晚</span>
+          </div>
+        </div>
+        <div class="day-section">
+          <div class="day-section-title"><span class="icon">🍽️</span> 美食推荐</div>
+          <div class="food-box">
+            <div class="food-item"><span class="food-name">United Bakeries</span> — 奥斯陆连锁面包店，肉桂卷（Skillingsboller）和酸种面包三明治，早餐好选择</div>
+            <div class="food-item"><span class="food-name">赫尔辛基晚餐：Ravintola Sea Horse</span> — 1934年开业的老牌芬兰家庭餐厅，大分量实惠，经典炸鲱鱼（Silakka）和奶油蘑菇煎饼</div>
+            <div class="food-item"><span class="food-name">Stockmann 百货地下超市</span> — 最后机会采购芬兰特产：Fazer巧克力、湖区浆果果酱、Marimekko打折品</div>
+          </div>
+        </div>
+        <div class="accommodation">
+          <span class="icon">🏨</span> 住宿：赫尔辛基市中心或机场酒店（芬兰第4晚，强化签证逻辑）
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 12 -->
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-label">DAY 12</span>
+        <span class="day-date">10月06日 周二</span>
+        <div class="day-title">✈️ 赫尔辛基离境 · 归途</div>
+      </div>
+      <div class="day-body">
+        <div class="day-section">
+          <div class="day-section-title"><span class="icon">📍</span> 行程安排</div>
+          <div class="day-text">
+            如果是下午或晚上航班，上午还有时间逛逛。推荐去<strong>Oodi 中央图书馆</strong>——2018年落成的芬兰骄傲之作，三层各有功能（3D打印、录音室、游戏区、阅读空间），顶层的落地窗观景阅读区对公众完全免费开放，是芬兰人"平等获取知识"理念的建筑化身。
+            <br><br>
+            或者去<strong>设计区（Design District Helsinki）</strong>逛逛 Iittala、Arabia、Marimekko 等芬兰经典设计品牌的旗舰店/折扣店，最后采购。
+            <br><br>
+            机场退税、登机。<strong>芬兰航空 AY99 赫尔辛基→香港</strong>，飞行约10小时。在万米高空回味这12天从波罗的海到北纬78°冰川的极北旅程。
+          </div>
+          <div class="spot-tags">
+            <span class="spot-tag attraction">Oodi 中央图书馆</span>
+            <span class="spot-tag activity">设计区最后采购</span>
+            <span class="spot-tag tip">机场退税</span>
+          </div>
+        </div>
+        <div class="accommodation">
+          <span class="icon">✈️</span> 夜间航班，10月07日抵达香港 → 返回深圳
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SCHENGEN MATH -->
+  <h2 class="section-title">🧮 申根天数计算（签证官视角）</h2>
+  <div class="math-card">
+    <div class="math-row">
+      <span class="math-country">🇫🇮 芬兰（赫尔辛基 + 罗瓦涅米）</span>
+      <span class="math-nights finland">4 晚 ✅ 主访国</span>
+    </div>
+    <div class="math-row">
+      <span class="math-country">🇳🇴 挪威（特罗姆瑟 + 奥斯陆）</span>
+      <span class="math-nights norway">3 晚</span>
+    </div>
+    <div class="math-row">
+      <span class="math-country">🏔️ 斯瓦尔巴（非申根，不计入）</span>
+      <span class="math-nights svalbard">3 晚（不计）</span>
+    </div>
+    <div class="math-row" style="border-top: 2px solid rgba(255,255,255,0.1); padding-top:12px; margin-top:4px;">
+      <span class="math-country" style="font-weight:700; color:#fff;">申根区总停留</span>
+      <span class="math-nights finland">7 晚</span>
+    </div>
+  </div>
+
+  <!-- TIPS -->
+  <h2 class="section-title">📌 实用贴士</h2>
+  <div class="tips-grid">
+    <div class="tip-card">
+      <h4>🛂 签证递交</h4>
+      <p>深圳VFS Global芬兰签证中心（福田中洲湾C-Future City），需网上预约。材料中 Cover Letter 必须解释为何需要多次入境（斯瓦尔巴非申根来回需出入境）。酒店预订单确保芬兰4晚最多。</p>
+    </div>
+    <div class="tip-card">
+      <h4>🐻 斯瓦尔巴安全</h4>
+      <p>出朗伊尔城定居点范围必须有武装向导或自携枪支。所有户外活动请通过正规旅行社预订。10月偶有北极熊出没城镇周边，保持警觉。</p>
+    </div>
+    <div class="tip-card">
+      <h4>🌡️ 穿衣建议</h4>
+      <p>赫尔辛基 5-12°C，罗瓦涅米 -2~8°C，特罗姆瑟 2-8°C，斯瓦尔巴 -8~2°C。洋葱式分层穿衣，带防风防水外套、抓绒中层、保暖内衣、手套和帽子。冰川巡游务必穿最厚装备。</p>
+    </div>
+    <div class="tip-card">
+      <h4>💰 预算参考</h4>
+      <p>芬兰和挪威均为高消费国。餐厅人均€25-50，快餐/超市可降至€10-15。斯瓦尔巴活动费较贵：冰川巡游约 NOK 1200-1800，矿洞团约 NOK 600-900。极光团约 NOK 1200-1500。建议准备总预算 ¥30000-50000（不含机票）。</p>
+    </div>
+    <div class="tip-card">
+      <h4>📱 网络与支付</h4>
+      <p>芬兰和挪威刷卡/手机支付极为普及，几乎不需要现金。斯瓦尔巴同理。建议买一张欧洲eSIM（如 Airalo），挪威和芬兰通用，斯瓦尔巴信号由 Telenor 覆盖，城镇范围内OK，出城信号弱。</p>
+    </div>
+    <div class="tip-card">
+      <h4>📷 极光拍摄</h4>
+      <p>推荐带三脚架 + 广角镜头（14-24mm）。手机拍摄建议iPhone 15 Pro以上开夜间模式或用 NightCap/ProCam 手动设置（ISO 800-3200, 快门10-25秒）。极光追逐团通常提供三脚架和指导。</p>
+    </div>
+  </div>
+
+  <!-- PACKING HIGHLIGHT -->
+  <h2 class="section-title">🎒 必带清单速览</h2>
+  <div class="visa-card" style="background: linear-gradient(135deg, rgba(0,212,170,0.1), rgba(0,119,182,0.08));">
+    <p>🧥 <strong>衣物</strong>：防风防水硬壳外套、羽绒/棉服中层、保暖内衣（Merino羊毛推荐）、抓绒帽、防风手套、厚袜、防水登山鞋</p>
+    <p>📷 <strong>摄影</strong>：三脚架（轻便旅行款）、广角镜头、备用电池（低温耗电快，多带2块）、充电宝</p>
+    <p>💊 <strong>健康</strong>：常用药品、晕船药（冰川巡游可能颠簸）、保湿面霜和润唇膏（极地干燥）</p>
+    <p>📄 <strong>文件</strong>：护照（有效期 > 3个月）、签证打印件、行程单、酒店确认单、保险单（需覆盖申根区+斯瓦尔巴）、Cover Letter 副本</p>
+    <p>🔌 <strong>电源</strong>：欧标圆头转换插头（C/F型，芬兰挪威通用）</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>🌌 2026 芬兰 & 挪威斯瓦尔巴 12天极北之旅 · 深圳递签版</p>
+    <p style="margin-top:6px;">路线设计基于2025年可查信息，出行前请确认航班、签证政策和活动运营最新情况</p>
+    <p style="margin-top:6px; color: #334155;">Made with 🤍 for the Arctic dreamers</p>
+  </div>
+
+</div>
+
+</body>
+</html>
